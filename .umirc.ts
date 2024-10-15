@@ -1,7 +1,11 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
-  plugins: ['@umijs/plugins/dist/locale', '@umijs/plugins/dist/antd'],
+  plugins: [
+    '@umijs/plugins/dist/locale',
+    '@umijs/plugins/dist/antd',
+    '@umijs/plugins/dist/request',
+  ],
   routes: [
     { path: '/home', component: '@/pages/home/index.tsx' },
     {
@@ -15,5 +19,12 @@ export default defineConfig({
     default: 'zh-CN',
     baseSeparator: '-',
   },
+  proxy: {
+    '/miku': {
+      target: 'http://localhost:3000',
+      changeOrigin: true,
+    },
+  },
   antd: {},
+  request: {},
 });

@@ -14,5 +14,8 @@
   "chronicle_events_label_move_house": "搬家！杭州 -> 成都",
   "chronicle_events_label_start_sing": "学习唱歌！",
   "chronicle_events_label_start_fitness": "开始健身！",
-  "chronicle_events_label_your_name": "君の名わ"
+  "chronicle_events_label_your_name": "君の名わ",
+
+  "api_error_none_response": "请求已发送，无响应",
+  "api_error_request": "请求错误"
 }
