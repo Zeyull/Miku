@@ -1,3 +1,4 @@
+import { join } from 'path';
 import { defineConfig } from 'umi';
 
 export default defineConfig({
@@ -5,6 +6,7 @@ export default defineConfig({
     '@umijs/plugins/dist/locale',
     '@umijs/plugins/dist/antd',
     '@umijs/plugins/dist/request',
+    '@umijs/max-plugin-openapi',
   ],
   routes: [
     { path: '/home', component: '@/pages/home/index.tsx' },
@@ -27,4 +29,11 @@ export default defineConfig({
   },
   antd: {},
   request: {},
+  openAPI: [
+    {
+      requestLibPath: "import { request } from 'umi'",
+      schemaPath: join(__dirname, 'openapi.json'),
+      mock: false,
+    },
+  ],
 });
