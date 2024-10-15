@@ -1,42 +1,30 @@
 declare namespace API {
-  type addAnnouncementData = {
+  type AddAnnouncementData = {
     content: string;
     announcement_time: string;
     icon: string;
   };
 
-  type addAnnouncementResponse =
+  type AddAnnouncementResponse =
     // #/components/schemas/CommonResponse
     CommonResponse & {
-      data?: announcementData;
+      data?: AnnouncementData;
     };
 
-  type addArticleData = {
-    title: string;
-    content: string;
-    picture?: string;
-  };
-
-  type addArticleResponse =
-    // #/components/schemas/CommonResponse
-    CommonResponse & {
-      data?: { id?: Id };
-    };
-
-  type announcementData = {
+  type AnnouncementData = {
     id?: Id;
     content?: string;
     announcement_time?: string;
     icon?: string;
   };
 
-  type announcementListResponse =
+  type AnnouncementListResponse =
     // #/components/schemas/CommonResponse
     CommonResponse & {
-      data?: announcementData[];
+      data?: AnnouncementData[];
     };
 
-  type articleData = {
+  type ArticleData = {
     id: Id;
     title: string;
     content: string;
@@ -45,16 +33,10 @@ declare namespace API {
     picture?: string;
   };
 
-  type articleListResponse =
+  type ArticleListResponse =
     // #/components/schemas/CommonResponse
     CommonResponse & {
-      data?: { pagination?: paginationData; data?: articleData };
-    };
-
-  type articleResponse =
-    // #/components/schemas/CommonResponse
-    CommonResponse & {
-      data?: articleData;
+      data?: { pagination?: PaginationData; data?: ArticleData[] };
     };
 
   type CommonResponse = {
@@ -69,7 +51,7 @@ declare namespace API {
     id: number;
   };
 
-  type deleteAnnouncementResponse =
+  type DeleteAnnouncementResponse =
     // #/components/schemas/CommonResponse
     CommonResponse & {
       data?: { id?: Id };
@@ -82,30 +64,13 @@ declare namespace API {
     data?: any;
   };
 
-  type getArticleParams = {
-    /** The unique identifier of the account */
-    id: number;
-  };
-
   type Id = number;
 
-  type LoginResponse =
-    // #/components/schemas/CommonResponse
-    CommonResponse & {
-      data?: { token?: string; id?: Id };
-    };
-
-  type paginationData = {
+  type PaginationData = {
     count?: number;
   };
 
-  type RegisterResponse =
-    // #/components/schemas/CommonResponse
-    CommonResponse & {
-      data?: { id?: Id };
-    };
-
-  type updateAnnouncementData = {
+  type UpdateAnnouncementData = {
     content: string;
     announcement_time: string;
     icon: string;
@@ -116,40 +81,9 @@ declare namespace API {
     id: number;
   };
 
-  type updateAnnouncementResponse =
+  type UpdateAnnouncementResponse =
     // #/components/schemas/CommonResponse
     CommonResponse & {
       data?: { id?: Id };
     };
-
-  type updateArticleData = {
-    title: string;
-    content: string;
-    picture?: string;
-  };
-
-  type updateArticleParams = {
-    /** The unique identifier of the account to update */
-    id: number;
-  };
-
-  type updateArticleResponse =
-    // #/components/schemas/CommonResponse
-    CommonResponse & {
-      data?: { id?: Id };
-    };
-
-  type UserLogin = {
-    username: string;
-    password: string;
-  };
-
-  type UserRegister = {
-    username: string;
-    password: string;
-  };
-
-  type UserToken = {
-    token: string;
-  };
 }

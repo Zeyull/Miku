@@ -35,7 +35,7 @@
           }
         }
       },
-      "paginationData": {
+      "PaginationData": {
         "type": "object",
         "properties": {
           "count": {
@@ -61,88 +61,7 @@
           }
         }
       },
-      "UserRegister": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "example": "testUser"
-          },
-          "password": {
-            "type": "string",
-            "example": "password123"
-          }
-        },
-        "required": ["username", "password"]
-      },
-      "UserLogin": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "example": "testUser"
-          },
-          "password": {
-            "type": "string",
-            "example": "password123"
-          }
-        },
-        "required": ["username", "password"]
-      },
-      "UserToken": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "type": "string"
-          }
-        },
-        "required": ["token"]
-      },
-      "RegisterResponse": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/CommonResponse"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "$ref": "#/components/schemas/Id"
-                  }
-                }
-              }
-            }
-          }
-        ]
-      },
-      "LoginResponse": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/CommonResponse"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string",
-                    "example": "jwt-token-example"
-                  },
-                  "id": {
-                    "$ref": "#/components/schemas/Id"
-                  }
-                }
-              }
-            }
-          }
-        ]
-      },
-      "articleData": {
+      "ArticleData": {
         "type": "object",
         "properties": {
           "id": {
@@ -166,92 +85,7 @@
         },
         "required": ["id", "title", "content", "created_at", "updated_at"]
       },
-      "addArticleData": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "picture": {
-            "type": "string"
-          }
-        },
-        "required": ["title", "content"]
-      },
-      "updateArticleData": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "picture": {
-            "type": "string"
-          }
-        },
-        "required": ["title", "content"]
-      },
-      "articleResponse": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/CommonResponse"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/articleData"
-              }
-            }
-          }
-        ]
-      },
-      "addArticleResponse": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/CommonResponse"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "$ref": "#/components/schemas/Id"
-                  }
-                }
-              }
-            }
-          }
-        ]
-      },
-      "updateArticleResponse": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/CommonResponse"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "$ref": "#/components/schemas/Id"
-                  }
-                }
-              }
-            }
-          }
-        ]
-      },
-      "articleListResponse": {
+      "ArticleListResponse": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CommonResponse"
@@ -263,10 +97,13 @@
                 "type": "object",
                 "properties": {
                   "pagination": {
-                    "$ref": "#/components/schemas/paginationData"
+                    "$ref": "#/components/schemas/PaginationData"
                   },
                   "data": {
-                    "$ref": "#/components/schemas/articleData"
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ArticleData"
+                    }
                   }
                 }
               }
@@ -274,7 +111,7 @@
           }
         ]
       },
-      "announcementData": {
+      "AnnouncementData": {
         "type": "object",
         "properties": {
           "id": {
@@ -291,7 +128,7 @@
           }
         }
       },
-      "addAnnouncementData": {
+      "AddAnnouncementData": {
         "type": "object",
         "properties": {
           "content": {
@@ -306,7 +143,7 @@
         },
         "required": ["content", "announcement_time", "icon"]
       },
-      "updateAnnouncementData": {
+      "UpdateAnnouncementData": {
         "type": "object",
         "properties": {
           "content": {
@@ -321,7 +158,7 @@
         },
         "required": ["content", "announcement_time", "icon"]
       },
-      "announcementListResponse": {
+      "AnnouncementListResponse": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CommonResponse"
@@ -332,14 +169,14 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/announcementData"
+                  "$ref": "#/components/schemas/AnnouncementData"
                 }
               }
             }
           }
         ]
       },
-      "addAnnouncementResponse": {
+      "AddAnnouncementResponse": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CommonResponse"
@@ -348,13 +185,13 @@
             "type": "object",
             "properties": {
               "data": {
-                "$ref": "#/components/schemas/announcementData"
+                "$ref": "#/components/schemas/AnnouncementData"
               }
             }
           }
         ]
       },
-      "updateAnnouncementResponse": {
+      "UpdateAnnouncementResponse": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CommonResponse"
@@ -374,7 +211,7 @@
           }
         ]
       },
-      "deleteAnnouncementResponse": {
+      "DeleteAnnouncementResponse": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CommonResponse"
@@ -397,277 +234,6 @@
     }
   },
   "paths": {
-    "/nozomi/register": {
-      "post": {
-        "summary": "用户注册",
-        "tags": ["user"],
-        "operationId": "registerUser",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserRegister"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "注册成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegisterResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "注册失败",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/nozomi/login": {
-      "post": {
-        "summary": "用户登录",
-        "tags": ["user"],
-        "operationId": "loginUser",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserLogin"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "登录成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "登录失败",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/nozomi/verify-token": {
-      "post": {
-        "summary": "验证Token有效性",
-        "tags": ["user"],
-        "operationId": "verifyToken",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserToken"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Token有效",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommonResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Token无效",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/nozomi/article": {
-      "get": {
-        "summary": "获取文章",
-        "tags": ["article"],
-        "operationId": "getArticle",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "The unique identifier of the account",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "获取文章成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/articleResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "获取文章失败",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "新增文章",
-        "tags": ["article"],
-        "operationId": "addArticle",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/addArticleData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "新增文章成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/addArticleResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "新增文章失败",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "summary": "更新文章",
-        "tags": ["article"],
-        "operationId": "updateArticle",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "The unique identifier of the account to update",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateArticleData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "更新文章成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateArticleResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "更新文章失败",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/nozomi/articles-list": {
-      "get": {
-        "summary": "获取文章列表",
-        "tags": ["article"],
-        "operationId": "getArticleList",
-        "responses": {
-          "200": {
-            "description": "获取所有文章",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/articleListResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "获取失败",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/miku/announcements-list": {
       "get": {
         "summary": "获取公告列表",
@@ -679,7 +245,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/announcementListResponse"
+                  "$ref": "#/components/schemas/AnnouncementListResponse"
                 }
               }
             }
@@ -707,7 +273,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/addAnnouncementData"
+                "$ref": "#/components/schemas/AddAnnouncementData"
               }
             }
           }
@@ -718,7 +284,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/addAnnouncementResponse"
+                  "$ref": "#/components/schemas/AddAnnouncementResponse"
                 }
               }
             }
@@ -755,7 +321,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/updateAnnouncementData"
+                "$ref": "#/components/schemas/UpdateAnnouncementData"
               }
             }
           }
@@ -766,7 +332,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateAnnouncementResponse"
+                  "$ref": "#/components/schemas/UpdateAnnouncementResponse"
                 }
               }
             }
@@ -804,7 +370,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/deleteAnnouncementResponse"
+                  "$ref": "#/components/schemas/DeleteAnnouncementResponse"
                 }
               }
             }
@@ -833,7 +399,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/articleListResponse"
+                  "$ref": "#/components/schemas/ArticleListResponse"
                 }
               }
             }

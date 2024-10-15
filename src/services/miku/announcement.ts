@@ -6,11 +6,11 @@ import { request } from 'umi';
 export async function updateAnnouncement(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.updateAnnouncementParams,
-  body: API.updateAnnouncementData,
+  body: API.UpdateAnnouncementData,
   options?: { [key: string]: any },
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<API.updateAnnouncementResponse>('/miku/announcement', {
+  return request<API.UpdateAnnouncementResponse>('/miku/announcement', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -23,10 +23,10 @@ export async function updateAnnouncement(
 
 /** 新增公告 POST /miku/announcement */
 export async function addAnnouncement(
-  body: API.addAnnouncementData,
+  body: API.AddAnnouncementData,
   options?: { [key: string]: any },
 ) {
-  return request<API.addAnnouncementResponse>('/miku/announcement', {
+  return request<API.AddAnnouncementResponse>('/miku/announcement', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export async function deleteAnnouncement(
   options?: { [key: string]: any },
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<API.deleteAnnouncementResponse>('/miku/announcement', {
+  return request<API.DeleteAnnouncementResponse>('/miku/announcement', {
     method: 'DELETE',
     params: { ...queryParams },
     ...(options || {}),
@@ -52,7 +52,7 @@ export async function deleteAnnouncement(
 
 /** 获取公告列表 GET /miku/announcements-list */
 export async function getAnnouncementsList(options?: { [key: string]: any }) {
-  return request<API.announcementListResponse>('/miku/announcements-list', {
+  return request<API.AnnouncementListResponse>('/miku/announcements-list', {
     method: 'GET',
     ...(options || {}),
   });

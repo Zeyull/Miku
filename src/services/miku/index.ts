@@ -4,9 +4,7 @@
 // API 唯一标识：
 import * as announcement from './announcement';
 import * as article from './article';
-import * as user from './user';
 export default {
-  user,
-  article,
   announcement,
+  article,
 };
