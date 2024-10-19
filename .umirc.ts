@@ -11,7 +11,7 @@ export default defineConfig({
   routes: [
     { path: '/home', component: '@/pages/home/index.tsx' },
     {
-      path: '/blog-detail',
+      path: '/blog-detail/:id',
       component: '@/pages/blog/blog-detail/index.tsx',
     },
     { path: '/', redirect: '/home' },

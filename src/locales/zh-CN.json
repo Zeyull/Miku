@@ -17,5 +17,5 @@
   "chronicle_events_label_your_name": "君の名わ",
 
   "api_error_none_response": "请求已发送，无响应",
-  "api_error_request": "请求错误"
+  "api_error_request": "未知错误，请求错误"
 }

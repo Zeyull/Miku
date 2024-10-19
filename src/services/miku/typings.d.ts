@@ -39,6 +39,12 @@ declare namespace API {
       data?: { pagination?: PaginationData; data?: ArticleData[] };
     };
 
+  type ArticleResponse =
+    // #/components/schemas/CommonResponse
+    CommonResponse & {
+      data?: ArticleData;
+    };
+
   type CommonResponse = {
     code?: number;
     msg?: string;
@@ -62,6 +68,11 @@ declare namespace API {
     msg?: string;
     /** 任意值 */
     data?: any;
+  };
+
+  type getArticleParams = {
+    /** The unique identifier of the account */
+    id: number;
   };
 
   type Id = number;
