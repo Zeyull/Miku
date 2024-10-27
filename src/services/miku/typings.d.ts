@@ -12,10 +12,11 @@ declare namespace API {
     };
 
   type AnnouncementData = {
-    id?: Id;
-    content?: string;
-    announcement_time?: string;
-    icon?: string;
+    id: Id;
+    content: string;
+    announcement_time: string;
+    icon: string;
+    color: string;
   };
 
   type AnnouncementListResponse =
@@ -52,11 +53,6 @@ declare namespace API {
     data?: Record<string, any>;
   };
 
-  type deleteAnnouncementParams = {
-    /** The unique identifier of the announcement to delete */
-    id: number;
-  };
-
   type DeleteAnnouncementResponse =
     // #/components/schemas/CommonResponse
     CommonResponse & {
@@ -85,11 +81,6 @@ declare namespace API {
     content: string;
     announcement_time: string;
     icon: string;
-  };
-
-  type updateAnnouncementParams = {
-    /** The unique identifier of the announcement to update */
-    id: number;
   };
 
   type UpdateAnnouncementResponse =

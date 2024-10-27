@@ -1,12 +1,8 @@
-import {
-  CustomerServiceTwoTone,
-  EnvironmentTwoTone,
-  HomeTwoTone,
-  SkinTwoTone,
-  VideoCameraTwoTone,
-} from '@ant-design/icons';
+import { getAnnouncementsList } from '@/services/miku/announcement';
+import * as Icons from '@ant-design/icons';
 import { Card } from 'antd';
-import { ReactElement } from 'react';
+import moment from 'moment';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { FormattedMessage } from 'umi';
 import styles from './component.less';
 
@@ -18,39 +14,49 @@ interface EventInfo {
   [prop: string]: any;
 }
 
-const ChronicleEventInfos: Array<EventInfo> = [
-  {
-    icon: <VideoCameraTwoTone className={styles.icon} twoToneColor="#CE3030" />,
-    label: 'chronicle_events_label_your_name',
-    date: '2024-07-25',
-  },
-  {
-    icon: <SkinTwoTone className={styles.icon} twoToneColor="#1890ff" />,
-    label: 'chronicle_events_label_start_fitness',
-    date: '2024-07-20',
-  },
-  {
-    icon: (
-      <CustomerServiceTwoTone className={styles.icon} twoToneColor="#1890ff" />
-    ),
-    label: 'chronicle_events_label_start_sing',
-    date: '2024-07-20',
-  },
-  {
-    icon: <EnvironmentTwoTone className={styles.icon} twoToneColor="#1890ff" />,
-    label: 'chronicle_events_label_move_house',
-    date: '2024-07-14',
-  },
-  {
-    icon: <HomeTwoTone className={styles.icon} twoToneColor="#52c41a" />,
-    label: 'chronicle_events_label_start',
-    date: '2024-06-25',
-  },
-];
+function generateChronicleIcon(icon: string, color: string) {
+  // @ts-ignore
+  return React.createElement(Icons[icon], {
+    twoToneColor: color,
+    className: styles.icon,
+  });
+}
 
 // todo
-// 事记前加上icon或者emoji
+// 事记中尝试加上emoji
 export default function ChronicleEvent() {
+  const [chronicleList, setChronicleList] = useState<Array<EventInfo>>([]);
+
+  function getChronicleList(data: Array<API.AnnouncementData>) {
+    data.sort(
+      (a, b) =>
+        new Date(b.announcement_time).getTime() -
+        new Date(a.announcement_time).getTime(),
+    );
+    const chronicleEventInfos: Array<EventInfo> = [];
+    for (const item of data) {
+      chronicleEventInfos.push({
+        icon: generateChronicleIcon(item.icon, item.color),
+        label: item.content,
+        date: moment(item.announcement_time).format('YYYY-MM-DD'),
+      });
+    }
+    setChronicleList(chronicleEventInfos);
+  }
+
+  // 初始化事计
+  useEffect(() => {
+    async function initChronicleList() {
+      try {
+        const res = await getAnnouncementsList();
+        if (res.code === 200) {
+          getChronicleList(res.data ?? []);
+        }
+      } catch {}
+    }
+    initChronicleList();
+  }, []);
+
   return (
     <>
       <Card
@@ -61,14 +67,12 @@ export default function ChronicleEvent() {
           <FormattedMessage id={'chronicle_event_update_line_label'} />
         </span>
 
-        {ChronicleEventInfos.map((item, index) => {
+        {chronicleList.map((item, index) => {
           return (
             <div key={index} className={styles.event}>
               {item.icon}
               <span className={styles.date}>{item.date}</span>
-              <span className={styles.label}>
-                <FormattedMessage id={item.label} />
-              </span>
+              <span className={styles.label}>{item.label}</span>
             </div>
           );
         })}
