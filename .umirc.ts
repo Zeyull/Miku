@@ -29,6 +29,7 @@ export default defineConfig({
   },
   antd: {},
   request: {},
+  title: '落雪如衣',
   openAPI: [
     {
       requestLibPath: "import { request } from 'umi'",
