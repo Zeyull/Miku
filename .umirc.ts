@@ -17,7 +17,7 @@ export default defineConfig({
     { path: '/', redirect: '/home' },
   ],
   npmClient: 'pnpm',
-  publicPath: './',
+  publicPath: '/app/miku/',
   base: '/app/miku/',
   favicons: ['./favicon.ico'],
   locale: {
