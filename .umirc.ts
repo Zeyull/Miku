@@ -20,6 +20,7 @@ export default defineConfig({
   publicPath: '/app/miku/',
   base: '/app/miku/',
   favicons: ['./favicon.ico'],
+  outputPath: '/var/www/html',
   locale: {
     default: 'zh-CN',
     baseSeparator: '-',
@@ -32,7 +33,7 @@ export default defineConfig({
   },
   antd: {},
   request: {},
-  title: '落雪如衣',
+  title: 'Miku',
   openAPI: [
     {
       requestLibPath: "import { request } from 'umi'",
