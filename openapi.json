@@ -81,9 +81,20 @@
           },
           "picture": {
             "type": "string"
+          },
+          "is_visible": {
+            "type": "number",
+            "description": "值为0，1。1为显示，0为隐藏"
           }
         },
-        "required": ["id", "title", "content", "created_at", "updated_at"]
+        "required": [
+          "id",
+          "title",
+          "content",
+          "created_at",
+          "updated_at",
+          "is_visible"
+        ]
       },
       "ArticleResponse": {
         "allOf": [

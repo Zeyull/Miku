@@ -4,6 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import { history, useIntl } from 'umi';
 import styles from './component.less';
 
+enum ArticleIsVisibleState {
+  HIDDEN,
+  VISIBLE,
+}
+
 export default function ArticleCard() {
   const titleRef = useRef<Array<HTMLParagraphElement>>([]);
   const [popOverKey, setPopOverKey] = useState('');
@@ -43,7 +48,7 @@ export default function ArticleCard() {
   return (
     <div className={styles['card-content']}>
       {articleList.map((item, index) => {
-        return (
+        return item.is_visible === ArticleIsVisibleState.VISIBLE ? (
           <Card
             className={styles.card}
             key={index}
@@ -82,7 +87,7 @@ export default function ArticleCard() {
               ></span>
             </div>
           </Card>
-        );
+        ) : null;
       })}
     </div>
   );

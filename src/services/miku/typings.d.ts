@@ -32,6 +32,8 @@ declare namespace API {
     created_at: string;
     updated_at: string;
     picture?: string;
+    /** 值为0，1。1为显示，0为隐藏 */
+    is_visible: number;
   };
 
   type ArticleListResponse =
