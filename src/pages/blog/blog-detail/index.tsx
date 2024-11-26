@@ -1,5 +1,5 @@
 import { getArticle } from '@/services/miku/article';
-import { Card } from 'antd';
+import { Card, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -20,15 +20,21 @@ export default function BlogDetailPage() {
           setArticle(res.data);
         }
       } catch {}
-      console.log(article);
     }
     initBlogDetail();
   }, []);
 
   return (
-    article && (
-      <div className={styles.page}>
-        <div className={styles['main-context']}>
+    <div className={styles.page}>
+      <div className={styles['main-context']}>
+        <Skeleton
+          className={styles.skeleton}
+          active
+          loading={!Boolean(article)}
+          paragraph={{
+            rows: 7,
+          }}
+        >
           <p className={styles.title}>{article?.title}</p>
           <Card>
             <Markdown
@@ -60,10 +66,10 @@ export default function BlogDetailPage() {
               {article?.content}
             </Markdown>
           </Card>
-        </div>
-        <div className={styles['left-context']}></div>
-        <div className={styles['right-context']}></div>
+        </Skeleton>
       </div>
-    )
+      <div className={styles['left-context']}></div>
+      <div className={styles['right-context']}></div>
+    </div>
   );
 }
