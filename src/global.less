@@ -1,3 +1,23 @@
 body {
   margin: 0;
 }
+
+/* 适用于Webkit内核浏览器（Chrome, Safari, Edge等） */
+::-webkit-scrollbar {
+  width: 4px; /* 垂直滚动条宽度 */
+  height: 4px; /* 水平滚动条高度 */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* 滚动条轨道颜色 */
+  border-radius: 5px; /* 圆角 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd; /* 滚动条滑块颜色 */
+  border-radius: 5px; /* 圆角 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* 鼠标悬停时滑块颜色 */
+}
